@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import TabComponent from "./components/TabComponent";
+import Carousel from "./components/Carousel";
+import Counter from "./components/Counter";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+  state = {
+    content: "",
+  };
+  render() {
+    return (
+      <div className="App">
+        <Counter />
+        <br />
+        <br />
+        <Carousel />
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <TabComponent
+          tabname="Dog"
+          setContent={(e) => this.setState({ content: e })}
+          content="Dog1 ieie"
+        />
+        <TabComponent
+          tabname="Cat"
+          content="Cat2"
+          setContent={(e) => this.setState({ content: e })}
+        />
+        <TabComponent
+          tabname="Fish"
+          content="Fish3"
+          setContent={(e) => this.setState({ content: e })}
+        />
+        <br />
+        <br />
+        <div
+          className="content"
+          style={{
+            margin: "0 auto",
+            width: "90%",
+            height: "400px",
+            border: "solid red",
+            fontSize: "2rem",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          {this.state.content}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
